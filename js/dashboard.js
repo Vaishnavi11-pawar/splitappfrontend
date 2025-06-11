@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // Fetch and display dashboard data
     const fetchDashboardData = async () => {
+
         try {
+            console.log(`${CONFIG.API_URL}/expenses`);
+            
             const [expenses, people, categoryData] = await Promise.all([
                 fetch(`${CONFIG.API_URL}/expenses`).then(r => r.json()),
                 fetch(`${CONFIG.API_URL}/people`).then(r => r.json()),
                 fetch(`${CONFIG.API_URL}/spending-category`).then(r => r.json())
             ]);
-
             // Update statistics
             document.getElementById('totalExpenses').textContent = '₹' + 
                 expenses.data.reduce((sum, exp) => sum + exp.amount, 0).toFixed(2);
