@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const fetchDashboardData = async () => {
         try {
             const [expenses, people, categoryData] = await Promise.all([
-                fetch('/api/v1/expenses').then(r => r.json()),
-                fetch('/api/v1/people').then(r => r.json()),
-                fetch('/api/v1/spending-category').then(r => r.json())
+                fetch(`${CONFIG.API_URL}/expenses`).then(r => r.json()),
+                fetch(`${CONFIG.API_URL}/people`).then(r => r.json()),
+                fetch(`${CONFIG.API_URL}/spending-category`).then(r => r.json())
             ]);
 
             // Update statistics
